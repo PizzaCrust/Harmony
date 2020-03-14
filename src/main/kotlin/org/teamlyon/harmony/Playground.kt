@@ -33,7 +33,7 @@ interface Playground {
     val description: String?
     val slug: String
 
-    data class Role(val id: String, val name: String, val color: String)
+    data class Role(val id: String, val name: String, val color: String?)
 
     val myselfKicked: Boolean
     val myselfBanned: Boolean
