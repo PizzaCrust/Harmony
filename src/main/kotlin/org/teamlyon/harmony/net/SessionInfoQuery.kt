@@ -10,7 +10,7 @@ data class ListNode<T>(var nodes: List<T>)
 data class ConditionsModel(var party_size: String)
 
 data class LobbyLeaderboardConfig(var game: String,
-                                  var scores: LobbyLeaderboardReference.Configuration.ScoringSystem,
+                                  var scores: List<LobbyLeaderboardReference.Configuration.ScoringSystem>,
                                   var conditions: ConditionsModel,
                                   var consensus_minimum: Int,
                                   var contest_type: String,
