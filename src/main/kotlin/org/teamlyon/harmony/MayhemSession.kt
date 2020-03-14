@@ -24,7 +24,6 @@ interface MayhemSession {
     val latestBinaryRelease: ClientRelease
     val latestSupportedBinaryRelease: ClientRelease
 
-    val preferences: PreferencesResource
     val playgrounds: List<Playground>
 
 }

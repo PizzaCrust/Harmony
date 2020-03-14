@@ -11,7 +11,6 @@ interface Lobby {
 }
 
 interface LobbyLeaderboardReference {
-    //TODO Lobby codes
 
     val id: String
     val slug: String
@@ -40,5 +39,21 @@ interface LobbyLeaderboardReference {
 
     val config: Configuration
 
+    fun extend(): ExtendedLeaderboard // pulls specifically for contest to receive codes etc
+
+
+}
+
+interface ExtendedLeaderboard {
+
+    data class LobbyCode(val name: String,
+                         val code: String,
+                         val createdAt: Long,
+                         val startedAt: Long,
+                         val region: String,
+                         val description: String,
+                         val creator: MayhemSession.User)
+
+    val codes: List<LobbyCode>
 
 }
