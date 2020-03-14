@@ -15,7 +15,7 @@ interface MayhemService {
                              var user_username: String?)
 
     @FormUrlEncoded
-    @POST("sign_in.json")
+    @POST("users/sign_in.json")
     fun login(@Field("email") email: String, @Field("password") password: String,
               @Field("time_zone") timezone: String): Call<LoginResponse>
 
