@@ -29,7 +29,7 @@ interface LobbyLeaderboardReference {
 
         val scores: List<ScoringSystem>
 
-        val partySize: Int
+        val partySize: String
 
         val consensusMinimum: Int
         val type: String

@@ -1,4 +1,4 @@
-package org.teamlyon.harmony.util
+package org.teamlyon.harmony.net
 
 import com.google.gson.Gson
 
