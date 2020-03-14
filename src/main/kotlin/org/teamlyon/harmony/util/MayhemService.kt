@@ -1,12 +1,11 @@
 package org.teamlyon.harmony.util
 
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface MayhemService {
@@ -23,8 +22,9 @@ interface MayhemService {
 
     data class GQLMayhemQuery(var api_token: String, var query: String, var variables: Map<String, Any> = mapOf())
 
-    data class DataResponse(var data: String?)
+    data class DataResponse(var data: JsonObject?)
 
+    @Headers("Content-Type: application/json")
     @POST("graphql")
     fun queryService(@Body query: GQLMayhemQuery): Call<DataResponse>
 
