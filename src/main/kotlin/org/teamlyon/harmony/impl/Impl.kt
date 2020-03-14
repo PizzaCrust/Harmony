@@ -7,7 +7,7 @@ import java.lang.RuntimeException
 import java.lang.UnsupportedOperationException
 import java.util.*
 
-class SessionImpl(email: String, password: String): MayhemSession {
+class SessionImpl(email: String, password: String, enabledChat: Boolean = false): MayhemSession {
 
     val apiToken: String
     val sessionInfo: SessionInfoQuery
@@ -21,6 +21,9 @@ class SessionImpl(email: String, password: String): MayhemSession {
         apiToken = resp.body()!!.api_token!!
         sessionInfo = getMayhemRestService().queryFromStore(apiToken, StoredGPLQueries.SESSION_INFO_QUERY,
                 SessionInfoQuery::class.java)
+        if (enabledChat) {
+            getChat(sessionInfo).closeOnShutdown()
+        }
     }
 
     class MyselfImpl(val info: SessionInfoQuery, val token: String): MayhemSession.Myself {

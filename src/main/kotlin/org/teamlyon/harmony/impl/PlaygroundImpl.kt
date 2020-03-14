@@ -31,7 +31,9 @@ class PlaygroundImpl(private val apiToken: String, pgSlug: String): Playground {
             get() = channelModel.id
 
         override fun addListener(listener: (Playground.Channel.Message) -> Unit) {
-            TODO("Not yet implemented")
+            if (chatService != null) {
+                chatService!!.addListener(channelModel, listener)
+            }
         }
 
         override val read: Boolean
