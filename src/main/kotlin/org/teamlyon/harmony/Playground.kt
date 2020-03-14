@@ -3,6 +3,7 @@ package org.teamlyon.harmony
 interface Playground {
 
     interface Channel {
+        //TODO
 
         val name: String
         val id: String
@@ -24,5 +25,28 @@ interface Playground {
         val rateLimitMs: Long
 
     }
+
+    val channels: List<Channel>
+
+    val name: String
+    val id: String
+    val description: String?
+    val slug: String
+
+    data class Role(val id: String, val name: String, val color: String)
+
+    val myselfKicked: Boolean
+    val myselfBanned: Boolean
+    val myselfMuted: Boolean
+    val myselfRole: Role
+    val myselfPermissons: List<String>
+
+    val roles: List<Role>
+
+    val members: Int
+
+    val creator: MayhemSession.User
+
+    val lobbies: List<Lobby>
 
 }
