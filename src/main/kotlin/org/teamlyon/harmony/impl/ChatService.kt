@@ -42,9 +42,30 @@ class ChatService(sessionInfo: SessionInfoQuery) {
             .setUuid(sessionInfo.me.slug)
             .setSecure(true))
 
+    data class SenderModel(var avatar: String,
+                           var id: String,
+                           var slug: String,
+                           var name: String)
+
+    class SenderUserImpl(private val sender: SenderModel): MayhemSession.User {
+        override val slug: String
+            get() = sender.slug
+        override val id: String
+            get() = sender.id
+        override val username: String
+            get() = sender.name
+        override val avatarUrl: String
+            get() = sender.avatar
+        override val discord: String?
+            get() = null
+        override val fnUsername: String?
+            get() = null
+
+    }
+
     data class MessageJson(var version: String,
                            var id: String,
-                           var sender: UserModel,
+                           var sender: SenderModel,
                            var content: String,
                            var sentAt: Long)
 
@@ -58,7 +79,7 @@ class ChatService(sessionInfo: SessionInfoQuery) {
         override val id: String
             get() = json.id
         override val sender: MayhemSession.User
-            get() = PlaygroundImpl.UserImpl(json.sender)
+            get() = SenderUserImpl(json.sender)
         override val content: String
             get() = json.content
         override val sentAt: Long
