@@ -22,8 +22,8 @@ import java.lang.UnsupportedOperationException
 /*
     Keys to access Mayhem chat service
  */
-const val PUB_KEY: String = "16007599-3ad8-4766-87a0-ef5f02afb75b"
-const val SUB_KEY: String = "e0c40c28-f1da-11e9-ad72-8e6732c0d56b"
+const val PUB_KEY: String = "pub-c-16007599-3ad8-4766-87a0-ef5f02afb75b"
+const val SUB_KEY: String = "sub-c-e0c40c28-f1da-11e9-ad72-8e6732c0d56b"
 
 var chatService: ChatService? = null
 
